@@ -28,7 +28,6 @@ namespace hello_tilt.Pages
             var startTime = DateTimeOffset.FromUnixTimeMilliseconds(IndexModel.startTimeMillis);
             var end = DateTime.Now;
             TimeSpan diff = end - startTime;
-            Console.WriteLine(String.Format("Diff: {0}", diff.TotalSeconds));
 
             var interval = diff.TotalMilliseconds;
 
