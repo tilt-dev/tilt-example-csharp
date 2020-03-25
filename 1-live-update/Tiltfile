@@ -1,3 +1,23 @@
-docker_build('hello-tilt', './hello-tilt')
+local_resource(
+    'build',
+    'dotnet publish -c Release -o out',
+     deps=[
+        'hello-tilt',
+     ],
+     ignore=[
+         'hello-tilt/out',
+         'hello-tilt/obj',
+     ]
+)
+
+docker_build(
+    'hello-tilt',
+    './hello-tilt',
+    live_update=[
+        sync('hello-tilt/out', '/app/out'),
+        restart_container(),
+    ],
+    ignore=['obj', 'bin'],
+)
 k8s_yaml('kubernetes.yaml')
-k8s_resource('hello-tilt', port_forwards='8080:80')
+k8s_resource('hello-tilt', port_forwards='8080:80', resource_deps=['build'])
