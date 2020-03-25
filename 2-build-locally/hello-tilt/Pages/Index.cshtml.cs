@@ -31,7 +31,7 @@ namespace hello_tilt.Pages
 
             var interval = diff.TotalMilliseconds;
 
-            return String.Format("Deployyyyyy time: {0}ms", interval.ToString());
+            return String.Format("Deploy time: {0}ms", interval.ToString());
         }
     }
 }
