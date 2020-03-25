@@ -15,6 +15,14 @@ local_resource(
     resource_deps=['deploy'],
 )
 
-docker_build('hello-tilt', 'out', dockerfile='Dockerfile')
+docker_build(
+    'hello-tilt',
+    'out',
+    dockerfile='Dockerfile',
+    live_update=[
+        sync('out', '/app/out'),
+    ],
+    entrypoint='find . | entr -r dotnet hello-tilt.dll',
+)
 k8s_yaml('kubernetes.yaml')
 k8s_resource('hello-tilt', port_forwards='8080:80', resource_deps=['build'])
