@@ -1,0 +1,11 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <RootNamespace>hello_tilt</RootNamespace>
+  </PropertyGroup>
+  <PropertyGroup>
+	<DefaultItemExcludes>$(DefaultItemExcludes);out/**/*</DefaultItemExcludes>
+  </PropertyGroup>
+
+</Project>
