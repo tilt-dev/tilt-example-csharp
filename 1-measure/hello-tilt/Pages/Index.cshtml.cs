@@ -11,8 +11,7 @@ namespace hello_tilt.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private const int startTimeSecs = 1585155063;
-        private const int startTimeNanos = 224721765;
+        private const long startTimeMillis = 1585156288579;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -24,20 +23,16 @@ namespace hello_tilt.Pages
 
         }
 
-        public long GetStartTimeSecs()
-        {
-            return IndexModel.startTimeSecs;
-        }
-
         public string GetUpdateDuration()
         {
-            var startTime = new TimeSpan(0, 0, 0, IndexModel.startTimeSecs, IndexModel.startTimeNanos);
-            DateTime end = DateTime.Now;
-            var diff = end.Subtract(startTime);
+            var startTime = DateTimeOffset.FromUnixTimeMilliseconds(IndexModel.startTimeMillis);
+            var end = DateTime.Now;
+            TimeSpan diff = end - startTime;
+            Console.WriteLine(String.Format("Diff: {0}", diff.TotalSeconds));
 
-            var dur = new DateTimeOffset(diff).ToUnixTimeMilliseconds() / 1000;
+            var interval = diff.TotalMilliseconds;
 
-            return String.Format("Deploy time: {0}s", dur.ToString());
+            return String.Format("Deploy time: {0}ms", interval.ToString());
         }
     }
 }
