@@ -11,7 +11,8 @@ namespace hello_tilt.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private const long startTimeMillis = 1586208533938;
+        private const long startTimeMillis = 1586209534408;
+        private static DateTime end = DateTime.Now;
 
         public IndexModel(ILogger<IndexModel> logger)
         {
@@ -26,7 +27,6 @@ namespace hello_tilt.Pages
         public string GetUpdateDuration()
         {
             var startTime = DateTimeOffset.FromUnixTimeMilliseconds(IndexModel.startTimeMillis);
-            var end = DateTime.Now;
             TimeSpan diff = end - startTime;
 
             var interval = diff.TotalMilliseconds;
