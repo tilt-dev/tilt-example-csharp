@@ -11,7 +11,7 @@ namespace hello_tilt.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private const long startTimeMillis = 1586209301479;
+        private const long startTimeMillis = 1586213103787;
         private static DateTime end = DateTime.Now;
 
         public IndexModel(ILogger<IndexModel> logger)
@@ -31,7 +31,7 @@ namespace hello_tilt.Pages
 
             var interval = diff.TotalMilliseconds;
 
-            return String.Format("Deploy time: {0}ms", interval.ToString());
+            return String.Format("{0}ms", interval.ToString());
         }
     }
 }
