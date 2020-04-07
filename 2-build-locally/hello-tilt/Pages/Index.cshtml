@@ -1,11 +1,9 @@
 ﻿@page
 @model IndexModel
 @{
-    ViewData["Title"] = "Home page";
+    ViewData["Title"] = "Hello cats!";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-    <p>@Model.GetUpdateDuration()</p>
-</div>
+<img src="pets.png" style="max-width: 30vw; max-height: 30vh;">
+<div>Hello cats!</div>
+<div>Time from "deploy" button pressed → server up: @Model.GetUpdateDuration()</div>
