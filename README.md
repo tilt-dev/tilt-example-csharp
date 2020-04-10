@@ -2,7 +2,7 @@
 
 [![Build Status](https://circleci.com/gh/windmilleng/tilt-example-csharp/tree/master.svg?style=shield)](https://circleci.com/gh/windmilleng/tilt-example-csharp)
 
-An example project that demonstrates a live-updating C# ASP.NET Core server in Kubernetes.
+An example project that demonstrates a live-updating C# ASP.NET Core server in Kubernetes. Read [doc](https://docs.tilt.dev/example_csharp.html).
 
 ## Fastest Deployment
 
