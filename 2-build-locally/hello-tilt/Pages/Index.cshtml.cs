@@ -11,7 +11,7 @@ namespace hello_tilt.Pages
     public class IndexModel : PageModel
     {
         private readonly ILogger<IndexModel> _logger;
-        private const long startTimeMillis = 1586213103787;
+        private const long startTimeMillis = 1589398664868;
         private static DateTime end = DateTime.Now;
 
         public IndexModel(ILogger<IndexModel> logger)
