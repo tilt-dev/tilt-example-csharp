@@ -1,3 +1,8 @@
+# -*- mode: Python -*-
+
+# For more on Extensions, see: https://docs.tilt.dev/extensions.html
+load('ext://restart_process', 'docker_build_with_restart')
+
 # Records the current time, then kicks off a server update.
 # Normally, you would let Tilt do deploys automatically, but this
 # shows you how to set up a custom workflow that measures it.
@@ -15,14 +20,15 @@ local_resource(
     resource_deps=['deploy'],
 )
 
-docker_build(
+docker_build_with_restart(
     'hello-tilt',
     'out',
+    entrypoint=['dotnet', 'hello-tilt.dll'],
     dockerfile='Dockerfile',
     live_update=[
         sync('out', '/app/out'),
     ],
-    entrypoint='find . | entr -r dotnet hello-tilt.dll',
 )
+
 k8s_yaml('kubernetes.yaml')
 k8s_resource('hello-tilt', port_forwards='8080:80', resource_deps=['build'])
