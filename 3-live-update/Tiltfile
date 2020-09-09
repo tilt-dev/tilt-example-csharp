@@ -15,8 +15,8 @@ local_resource(
 local_resource(
     'build',
     'dotnet publish -c Release -o out',
-    deps=['hello-tilt'],
-    ignore=['hello-tilt/obj'],
+    deps=['../3-live-update/hello-tilt'],
+    ignore=['../**/obj'],
     resource_deps=['deploy'],
 )
 
