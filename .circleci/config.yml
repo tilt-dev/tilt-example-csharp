@@ -5,12 +5,13 @@ jobs:
       - image: tiltdev/tilt:latest
 
     steps:
-      - setup_remote_docker
       - checkout
+      - setup_remote_docker:
+          version: 19.03.12
       - run: apt install -y wget gpg
       - run: "wget -O- https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.asc.gpg && \
               mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/ && \
               wget https://packages.microsoft.com/config/debian/10/prod.list && \
               mv prod.list /etc/apt/sources.list.d/microsoft-prod.list"
       - run: apt update && apt install -y dotnet-sdk-3.1 python
-      - run: with-kind-cluster.sh test/test.sh
+      - run: ctlptl create cluster kind --registry=ctlptl-registry && test/test.sh
