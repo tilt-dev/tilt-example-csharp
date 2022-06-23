@@ -16,6 +16,6 @@ your project for live updates.
 
 ## License
 
-Copyright 2020 tilt.dev
+Copyright 2022 Docker, Inc.
 
 Licensed under [the Apache License, Version 2.0](LICENSE)
