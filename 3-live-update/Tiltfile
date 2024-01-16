@@ -8,7 +8,7 @@ load('ext://restart_process', 'docker_build_with_restart')
 # shows you how to set up a custom workflow that measures it.
 local_resource(
     'deploy',
-    'python ./record-start-time.py',
+    'python3 ./record-start-time.py',
     deps=['./record-start-time.py'],
 )
 
@@ -31,4 +31,4 @@ docker_build_with_restart(
 )
 
 k8s_yaml('kubernetes.yaml')
-k8s_resource('hello-tilt', port_forwards='8080:80', resource_deps=['build'])
+k8s_resource('hello-tilt', port_forwards='8080:8080', resource_deps=['build'])
